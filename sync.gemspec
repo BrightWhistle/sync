@@ -1,6 +1,10 @@
+$:.push File.expand_path("../lib", __FILE__)
+
+require 'sync/version'
+
 Gem::Specification.new do |s|
   s.name        = "sync"
-  s.version     = "0.3.1"
+  s.version     = Sync::VERSION
   s.author      = "Chris McCord"
   s.email       = "chris@chrismccord.com"
   s.homepage    = "http://github.com/chrismccord/sync"

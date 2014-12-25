@@ -29,6 +29,7 @@ require 'sync/clients/faye'
 require 'sync/clients/pusher'
 require 'sync/clients/dummy'
 require 'sync/reactor'
+require 'sync/version'
 if defined? Rails
   require 'sync/erb_tracker'
   require 'sync/engine'
