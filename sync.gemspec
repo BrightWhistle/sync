@@ -3,6 +3,8 @@ $:.push File.expand_path("../lib", __FILE__)
 require 'sync/version'
 
 Gem::Specification.new do |s|
+  s.required_ruby_version = Gem::Requirement.new('>= 1.9.3')
+
   s.name        = "sync"
   s.version     = Sync::VERSION
   s.author      = "Chris McCord"
@@ -10,7 +12,8 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/chrismccord/sync"
   s.summary     = "Realtime Rails Partials"
   s.description = "Sync turns your Rails partials realtime with automatic updates through Faye"
-  s.files       = Dir["{app,config,lib,test}/**/*", "[A-Z]*", "init.rb"] - ["Gemfile.lock"]
+  s.files = `git ls-files`.split("\n")
+  s.test_files = `git ls-files -- {gemfiles,test}/*`.split("\n")
   s.require_path = "lib"
   s.licenses    = ['MIT']
 
@@ -26,6 +29,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'pry'
   s.add_development_dependency 'minitest', '< 5.0.0'
-
-  s.required_rubygems_version = ">= 1.3.4"
 end
