@@ -46,7 +46,7 @@ module Sync
             });
           </script>
         ".squish.html_safe
-        results << partial.render
+        results << inject_sync_data( partial.render, partial.channel_prefix )
         results << "
           <script type='text/javascript' data-sync-id='#{partial.selector_end}'>
           </script>
@@ -101,6 +101,16 @@ module Sync
           });
         </script>
       ".html_safe
+    end
+    
+    private
+    # Inject the data attribute for the sync id
+    # 
+    # text - the html data for a partial
+    # id - the auth token or channel prefix
+    def inject_sync_data( text, id )
+      end_of_first_tag = text.index( '>' )
+      text.insert( end_of_first_tag, " data-sync-item-id='#{ id }' ")
     end
   end
 end

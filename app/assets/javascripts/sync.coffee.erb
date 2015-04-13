@@ -234,6 +234,8 @@ class Sync.Partial
     @$start = $("[data-sync-id='#{@selectorStart}']")
     @$end   = $("[data-sync-id='#{@selectorEnd}']")
     @$el    = @$start.nextUntil(@$end)
+    if !@$el or @$el.length == 0
+      @$el = $("[data-sync-item-id='#{@authToken}']")
     @view   = new (Sync.viewClassFromPartialName(@name, @resourceName))(@$el, @name)
     @adapter = Sync.adapter
 
