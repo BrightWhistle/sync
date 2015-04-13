@@ -128,7 +128,10 @@ class Sync.Pusher extends Sync.Adapter
     !!window.Pusher
 
   connect: ->
-    @client = new window.Pusher(Sync.PUSHER_API_KEY)
+    if window.Pusher
+      @client = window.Pusher
+    else
+      @client = new window.Pusher(Sync.PUSHER_API_KEY)
 
   isConnected: -> @client?.connection.state is "connected"
 
