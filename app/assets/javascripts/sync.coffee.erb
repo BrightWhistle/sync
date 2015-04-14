@@ -128,8 +128,8 @@ class Sync.Pusher extends Sync.Adapter
     !!window.Pusher
 
   connect: ->
-    if window.Pusher
-      @client = window.Pusher
+    if window.Pusher && window.Pusher.instances.length > 0
+      @client = window.Pusher.instances[0]
     else
       @client = new window.Pusher(Sync.PUSHER_API_KEY)
 
